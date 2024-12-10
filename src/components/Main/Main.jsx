@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getUser } from "../../api/api";
+import { getRepos, getUser } from "../../api/api";
 import * as S from "./Main.styled";
 import { Route } from "../Route/Route";
 import { User } from "../User/User";
@@ -12,6 +12,7 @@ export const Main = ({ user, setUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   let [pageCount, setPageCount] = useState(1);
 
+  const { repos } = useUserContext();
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -55,7 +56,9 @@ export const Main = ({ user, setUser }) => {
         <S.Ul>
           {err ? (
             <S.Error>{err}</S.Error>
-          ) : user.length <= 0 ? '' : (
+          ) : user.length <= 0 ? (
+            ""
+          ) : (
             user.map((i) => (
               <User
                 key={i.id}

@@ -2,9 +2,10 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./User.styled";
 import { useUserContext } from "../../App";
 
+
 export const User = ({ login, avatar, id, setUser }) => {
   const navigate = useNavigate();
-  const { user } = useUserContext();
+  const { user } = useUserContext(); 
 
   const handleUerProfil = (e) => {
     e.preventDefault();

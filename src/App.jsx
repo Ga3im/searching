@@ -9,14 +9,13 @@ export const UserContext = createContext(null);
 
 export function useUserContext() {
   const user = useContext(UserContext);
-  const repos = useContext(UserContext);
-  return  user, repos ;
+  return user;
 }
+
 function App() {
   const [user, setUser] = useState([]);
-  const [repos, setRepos] = useState();
   return (
-    <UserContext.Provider value={{ user, repos }}>
+    <UserContext.Provider value={{ user }}>
       <Routes>
         <Route
           path="/"
@@ -27,7 +26,7 @@ function App() {
             </>
           }
         />
-        <Route path="/user/:userId" element={<UserProfile repos={repos} setRepos={setRepos}/>} />
+        <Route path="/user/:userId" element={<UserProfile />} />
       </Routes>
     </UserContext.Provider>
   );
